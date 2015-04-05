@@ -1,0 +1,140 @@
+.mapTable {
+    border: 1px dashed white;
+}
+
+table,
+th,
+td {
+    border: 0px dashed white;
+}
+/*
+Tileset by yd
+http://opengameart.org/content/snowdesertwater-tiles
+*/
+
+.mapCell {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/water.png');
+    background-size: 100% 100%;
+}
+
+.groundCell {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/full.png');
+    background-size: 100% 100%;
+}
+
+.partGroundCell {
+    width: 32px;
+    height: 32px;
+}
+
+.groundCellCorner0 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/corner0.png');
+    background-size: 100% 100%;
+}
+
+.groundCellCorner1 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/corner1.png');
+    background-size: 100% 100%;
+}
+
+.groundCellCorner2 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/corner2.png');
+    background-size: 100% 100%;
+}
+
+.groundCellCorner3 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/corner3.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSingle0 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/single0.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSingle1 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/single1.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSingle2 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/single2.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSingle3 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/single3.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSurrounded0 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/surrounded2.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSurrounded1 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/surrounded1.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSurrounded2 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/surrounded0.png');
+    background-size: 100% 100%;
+}
+
+.groundCellSurrounded3 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/surrounded3.png');
+    background-size: 100% 100%;
+}
+.groundCellBridge0{
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/bridge0.png');
+    background-size: 100% 100%;
+}
+
+.groundCellBridge1{
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/bridge1.png');
+    background-size: 100% 100%;
+}
+.groundCellIsland{
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/ground/island.png');
+    background-size: 100% 100%;
+}
+#panel{
+    display: block;
+    width: auto;
+    height: auto;
+}

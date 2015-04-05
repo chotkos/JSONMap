@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON map generator</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Map generator for your own web browser game">
+    <meta name="keywords" content="map,generator,json">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="panel">
+        <fieldset id="panelSet">
+            Width
+            <input type="number" id="widthNew">
+            Height
+            <input type="number" id="heightNew">
+            Water to ground proportion(0-1)
+            <input type="number" id="wtgNew">
+            <input class="generateButton" type="button" value="Generate" onclick="generateNewMap()">
+            <input class="jsonButton" type="button" value="Download JSON" onclick="getJSON()">
+        </fieldset>
+    </div>
+    <div id="mapContainer">
+    </div>
+</body>
+
+</html>
