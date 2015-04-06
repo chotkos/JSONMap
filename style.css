@@ -10,13 +10,16 @@ td {
 /*
 Tileset by yd
 http://opengameart.org/content/snowdesertwater-tiles
+
+Map elements by Jinn
+http://opengameart.org/content/world-map-tiles
+
 */
 
 .mapCell {
     width: 32px;
     height: 32px;
     background-image: url('./img/tiles/water.png');
-    background-size: 100% 100%;
 }
 
 .groundCell {
@@ -24,11 +27,20 @@ http://opengameart.org/content/snowdesertwater-tiles
     height: 32px;
     background-image: url('./img/tiles/ground/full.png');
     background-size: 100% 100%;
+    position: absolute;
 }
 
 .partGroundCell {
     width: 32px;
     height: 32px;
+    position: absolute;
+}
+
+.forestCell {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    opacity: 0.9;
 }
 
 .groundCellCorner0 {
@@ -114,27 +126,83 @@ http://opengameart.org/content/snowdesertwater-tiles
     background-image: url('./img/tiles/ground/surrounded3.png');
     background-size: 100% 100%;
 }
-.groundCellBridge0{
+
+.groundCellBridge0 {
     width: 32px;
     height: 32px;
     background-image: url('./img/tiles/ground/bridge0.png');
     background-size: 100% 100%;
 }
 
-.groundCellBridge1{
+.groundCellBridge1 {
     width: 32px;
     height: 32px;
     background-image: url('./img/tiles/ground/bridge1.png');
     background-size: 100% 100%;
 }
-.groundCellIsland{
+
+.groundCellIsland {
     width: 32px;
     height: 32px;
     background-image: url('./img/tiles/ground/island.png');
     background-size: 100% 100%;
 }
-#panel{
+
+.forestCell0 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/forests/forest0.png');
+    background-size: 100% 100%;
+    z-index: 5;
+    position: absolute;
+    opacity: 0.8;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.forestCell1 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/forests/forest1.png');
+    background-size: 100% 100%;
+    z-index: 5;
+    position: absolute;
+    opacity: 0.8;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.forestCell2 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/forests/forest2.png');
+    background-size: 100% 100%;
+    z-index: 5;
+    position: absolute;
+    opacity: 0.8;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.forestCell3 {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/forests/forest3.png');
+    background-size: 100% 100%;
+    z-index: 5;
+    position: absolute;
+    opacity: 0.8;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
+#panel {
     display: block;
     width: auto;
     height: auto;
+    z-index: 5;
 }

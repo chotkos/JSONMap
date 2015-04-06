@@ -4,11 +4,14 @@ var waters = [];
 var mapWidth = 35;
 var mapHeight = 20;
 var landToWater = 0.2;
+var forestProportion = 0.5;
 
 $(document).ready(function () {
     $("#widthNew").val(mapWidth);
     $("#heightNew").val(mapHeight);
     $("#wtgNew").val(landToWater);
+    $("#forestsNew").val(forestProportion);
+
     generateMap(landToWater);
 });
 
@@ -17,12 +20,12 @@ var generateNewMap = function () {
     mapWidth = $("#widthNew").val();
     mapHeight = $("#heightNew").val();
     landToWater = $("#wtgNew").val();
+    forestProportion = $("#forestsNew").val();
     cells = [];
     lands = [];
     waters = [];
     generateMap();
 };
-
 var getJSON = function () {
     var result = lands.concat(waters);
     for (var i = 0; i < result.length; i++) {
@@ -115,6 +118,12 @@ var generateMap = function () {
             lands[j].x < mapWidth - 1 &&
             lands[j].y > 0 &&
             lands[j].y < mapHeight - 1) makeLonelyIsland(lands[j]);
+        //Forests
+    for (var j = 0; j < lands.length; j++)
+        if (lands[j].x > 0 &&
+            lands[j].x < mapWidth - 1 &&
+            lands[j].y > 0 &&
+            lands[j].y < mapHeight - 1) makeForests(lands[j]);
     removeFrame();
     mapHeight--;
     mapWidth--;
@@ -307,6 +316,32 @@ var makeLonelyIsland = function (cell) {
     if (isIsland(cell.x, cell.y)) {
         makeItLonelyIsland(cell);
     }
+};
+var makeForests = function (cell) {
+    var makeItForest = function (cell, type) {
+        //cell.element.empty();
+        cell.element.append("<div class='forestCell" + type + "' forestCell'></div>");
+        var newcCell = cell;
+        newcCell.decor = 'forest';
+        newcCell.decorType = type;
+        newcCell.numType = null;
+        lands[lands.indexOf(cell)] = newcCell;
+    }
+    var r = Math.random();
+    if (r < forestProportion && cell.type != 'Single') {
+
+        r = Math.random();
+        if (r < 0.25) {
+            makeItForest(cell, 0);
+        } else if (r < 0.5) {
+            makeItForest(cell, 1);
+        } else if (r < 0.75) {
+            makeItForest(cell, 2);
+        } else {
+            makeItForest(cell, 3);
+        }
+    }
+
 };
 var removeFrame = function () {
     $('#row0').remove();
