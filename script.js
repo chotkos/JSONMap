@@ -4,7 +4,7 @@ var waters = [];
 var mapWidth = 35;
 var mapHeight = 20;
 var landToWater = 0.2;
-var forestProportion = 0.5;
+var forestProportion = 0.2;
 
 $(document).ready(function () {
     $("#widthNew").val(mapWidth);
@@ -29,6 +29,7 @@ var generateNewMap = function () {
 var getJSON = function () {
     var result = lands.concat(waters);
     for (var i = 0; i < result.length; i++) {
+        result[i].htmlContent = result[i].element.html();
         result[i].element = null;
     }
     download('jsonMap.json', JSON.stringify(result));
@@ -320,7 +321,7 @@ var makeLonelyIsland = function (cell) {
 var makeForests = function (cell) {
     var makeItForest = function (cell, type) {
         //cell.element.empty();
-        cell.element.append("<div class='forestCell" + type + "' forestCell'></div>");
+        cell.element.append("<div class='forestCell" + type + " forestCell'></div>");
         var newcCell = cell;
         newcCell.decor = 'forest';
         newcCell.decorType = type;
