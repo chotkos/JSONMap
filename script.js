@@ -1,16 +1,18 @@
 var cells = [];
 var lands = [];
 var waters = [];
-var mapWidth = 35;
+var mapWidth = 20;
 var mapHeight = 20;
 var landToWater = 0.2;
 var forestProportion = 0.2;
+var mountainsProportion = 0.05
 
 $(document).ready(function () {
     $("#widthNew").val(mapWidth);
     $("#heightNew").val(mapHeight);
     $("#wtgNew").val(landToWater);
     $("#forestsNew").val(forestProportion);
+    $("#mountainsNew").val(mountainsProportion);
 
     generateMap(landToWater);
 });
@@ -21,6 +23,7 @@ var generateNewMap = function () {
     mapHeight = parseInt($("#heightNew").val());
     landToWater = $("#wtgNew").val();
     forestProportion = $("#forestsNew").val();
+    mountainsProportion = $("#mountainsNew").val();
     cells = [];
     lands = [];
     waters = [];
@@ -142,6 +145,12 @@ var generateMap = function () {
             lands[j].x < mapWidth - 1 &&
             lands[j].y > 0 &&
             lands[j].y < mapHeight - 1) makeForests(lands[j]);
+        //Mountains
+    for (var j = 0; j < lands.length; j++)
+        if (lands[j].x > 0 &&
+            lands[j].x < mapWidth - 1 &&
+            lands[j].y > 0 &&
+            lands[j].y < mapHeight - 1) makeMountains(lands[j]);
 
     removeFrame();
     prepareHTMLContent();
@@ -387,6 +396,23 @@ var makeForests = function (cell) {
         } else {
             makeItForest(cell, 3);
         }
+    }
+
+};
+
+var makeMountains = function (cell) {
+    var makeItMountain = function (cell) {
+        //cell.element.empty();
+        cell.element.append("<div class='mountainCell'></div>");
+        var newcCell = cell;
+        newcCell.decor = 'mountain';
+        newcCell.numType = null;
+        lands[lands.indexOf(cell)] = newcCell;
+    }
+    var r = Math.random();
+    if (r < mountainsProportion && cell.type != 'Single' && cell.decor != 'forest') {
+
+        makeItMountain(cell);
     }
 
 };

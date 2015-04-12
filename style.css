@@ -200,6 +200,19 @@ http://opengameart.org/content/world-map-tiles
     border-radius: 30px;
 }
 
+.mountainCell {
+    width: 32px;
+    height: 32px;
+    background-image: url('./img/tiles/mountain.png');
+    background-size: 100% 100%;
+    z-index: 5;
+    position: absolute;
+    opacity: 0.8;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+
 #panel {
     display: block;
     width: auto;
