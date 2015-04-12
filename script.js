@@ -30,10 +30,15 @@ var generateNewMap = function () {
     generateMap();
 };
 var getJSON = function () {
-    var result = lands.concat(waters);
-    for (var i = 0; i < result.length; i++) {
-        result[i].element = null;
+    var cellsOut = lands.concat(waters);
+    for (var i = 0; i < cellsOut.length; i++) {
+        cellsOut[i].element = null;
     }
+    var result = {
+        width: mapWidth,
+        height: mapHeight,
+        cells: cellsOut,
+    };
     download('jsonMap.json', JSON.stringify(result));
 };
 
