@@ -65,11 +65,11 @@ function download(filename, text) {
 }
 
 var generateMap = function () {
-    $('#mapContainer').append("<table id='mapTable'></table>");
+    $('#mapContainer').append("<table id='mapTable' class='mapTable'></table>");
     mapHeight += 2;
     mapWidth += 2;
     for (var i = 0; i < mapHeight; i++) {
-        $('#mapTable').append("<tr id='row" + i + "'></tr>");
+        $('#mapTable').append("<tr id='row" + i + "' class='mapRow'></tr>");
         for (var l = 0; l < mapWidth; l++) {
             $('#row' + i).append("<td id='cell" + l + "x" + i + "' class='mapCell'></td>");
             var cell = {

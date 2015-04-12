@@ -2,16 +2,12 @@
     border: 1px dashed white;
 }
 
-table {
+table.mapTable {
     border: 0px dashed white;
     table-layout: fixed;
 }
 
-th {
-    border: 0px dashed white;
-}
-
-td {
+td.mapCell {
     border: 0px dashed white;
     width: 32px;
     height: 32px;
