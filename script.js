@@ -68,6 +68,8 @@ var generateMap = function () {
                 $("#cell" + l + "x" + i).append("<div class='groundCell'></div>");
                 cell.isGround = true;
             }
+            cell.x = l;
+            cell.y = i;
             cells.push(cell);
         }
     }
@@ -76,18 +78,25 @@ var generateMap = function () {
         if (cells[k].isGround) {
             lands.push(cells[k]);
         } else {
-            waters.push(cell);
+            waters.push(cells[k]);
         }
     }
 
     //ground smoothing
-    //Island remover - sorry Reykjavik :D
+    //Island remover
     for (var ki = 0; ki < lands.length; ki++)
         if (lands[ki].x > 0 &&
             lands[ki].x < mapWidth - 1 &&
             lands[ki].y > 0 &&
             lands[ki].y < mapHeight - 1)
             smoothGroundIsland(lands[ki]);
+        //Lake remover
+    for (var ki = 0; ki < waters.length; ki++)
+        if (waters[ki].x > 0 &&
+            waters[ki].x < mapWidth - 1 &&
+            waters[ki].y > 0 &&
+            waters[ki].y < mapHeight - 1)
+            smoothGroundLake(waters[ki]);
         //Cornermaker
     for (var j = 0; j < lands.length; j++)
         if (lands[j].x > 0 &&
@@ -163,6 +172,33 @@ var smoothGroundIsland = function (cell) {
         waters.push(cell);
         lands.splice(lands.indexOf(cell), 1);
         cell.element.empty();
+    }
+};
+var smoothGroundLake = function (cell) {
+
+    var isLake = function (x, y) {
+        var cellleft = findCellByCoords(x - 1, y, lands);
+        var celltop = findCellByCoords(x, y - 1, lands);
+        var celldown = findCellByCoords(x, y + 1, lands);
+        var cellright = findCellByCoords(x + 1, y, lands);
+        if ((cellleft.isGround === true) &&
+            (celltop.isGround === true) &&
+            (celldown.isGround === true) &&
+            (cellright.isGround === true)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //remove small islands
+    if (isLake(cell.x, cell.y)) {
+        cell.isGround = true;
+        /*waters.push(cell);
+        lands.splice(lands.indexOf(cell), 1);*/
+        lands.push(cell);
+        waters.splice(waters.indexOf(cell), 1);
+        cell.element.append("<div class='groundCell'></div>");
     }
 };
 var smoothCorners = function (cell) {
