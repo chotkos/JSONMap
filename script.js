@@ -17,8 +17,8 @@ $(document).ready(function () {
 
 var generateNewMap = function () {
     $('#mapContainer').empty();
-    mapWidth = $("#widthNew").val();
-    mapHeight = $("#heightNew").val();
+    mapWidth = parseInt($("#widthNew").val());
+    mapHeight = parseInt($("#heightNew").val());
     landToWater = $("#wtgNew").val();
     forestProportion = $("#forestsNew").val();
     cells = [];
@@ -29,11 +29,19 @@ var generateNewMap = function () {
 var getJSON = function () {
     var result = lands.concat(waters);
     for (var i = 0; i < result.length; i++) {
-        result[i].htmlContent = result[i].element.html();
         result[i].element = null;
     }
     download('jsonMap.json', JSON.stringify(result));
 };
+
+var prepareHTMLContent = function () {
+    for (var i = 0; i < lands.length; i++) {
+        lands[i].htmlContent = lands[i].element.html();
+    }
+    for (var i = 0; i < waters.length; i++) {
+        waters[i].htmlContent = waters[i].element.html();
+    }
+}
 
 function download(filename, text) {
     var pom = document.createElement('a');
@@ -50,8 +58,8 @@ function download(filename, text) {
 
 var generateMap = function () {
     $('#mapContainer').append("<table id='mapTable'></table>");
-    mapHeight++;
-    mapWidth++;
+    mapHeight += 2;
+    mapWidth += 2;
     for (var i = 0; i < mapHeight; i++) {
         $('#mapTable').append("<tr id='row" + i + "'></tr>");
         for (var l = 0; l < mapWidth; l++) {
@@ -134,9 +142,11 @@ var generateMap = function () {
             lands[j].x < mapWidth - 1 &&
             lands[j].y > 0 &&
             lands[j].y < mapHeight - 1) makeForests(lands[j]);
+
     removeFrame();
-    mapHeight--;
-    mapWidth--;
+    prepareHTMLContent();
+    mapHeight -= 2;
+    mapWidth -= 2;
 }
 var findCellByCoords = function (x, y, collection) {
     for (var i = 0; i < collection.length; i++) {
